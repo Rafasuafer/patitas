@@ -1,6 +1,9 @@
 <!--generate a bootstrap navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-  <a class="navbar-brand" routerLink="/home"> Patitas </a>
+  <a class="navbar-brand" routerLink="/home">
+    <img src="../../../../favicon.ico" class="align-middle" />
+    Patitas
+  </a>
   <button
     class="navbar-toggler"
     type="button"
@@ -23,15 +26,5 @@
     </ul>
   </div>
 
-  <!--create register button-->
-  <button class="btn btn-primary mx-1" routerLink="/register" type="button">
-    Register
-  </button>
-  <button
-    class="btn btn-outline-success my-2 my-sm-0 mx-1"
-    type="submit"
-    routerLink="/login"
-  >
-    Login
-  </button>
+  <app-auth-nav></app-auth-nav>
 </nav>

@@ -1,1 +1,68 @@
-<p>login works!</p>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="card col-md-4">
+      <div class="card-header">
+        <h5>Login</h5>
+      </div>
+      <div class="card-body">
+        <form novalidate (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              [(ngModel)]="email"
+              #emailModel="ngModel"
+              required
+              email
+              [ngClass]="{
+                'is-invalid': emailModel.invalid && emailModel.touched
+              }"
+            />
+            <div
+              *ngIf="emailModel.errors?.required && emailModel.dirty"
+              class="text-danger"
+            >
+              Email is required
+            </div>
+            <div
+              *ngIf="emailModel.errors?.email && emailModel.touched"
+              class="text-danger"
+            >
+              Email is invalid
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+              #passwordModel="ngModel"
+              required
+            />
+            <div
+              *ngIf="passwordModel.errors?.required && passwordModel.dirty"
+              class="text-danger"
+            >
+              Password is required
+            </div>
+          </div>
+          <div class="text-end">
+            <button
+              type="submit"
+              class="btn btn-info my-2"
+              [disabled]="!loginForm.valid"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

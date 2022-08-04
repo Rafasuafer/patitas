@@ -1,0 +1,36 @@
+<ng-container *ngIf="!loggedIn">
+  <button
+    class="btn btn-outline-warning mx-1"
+    routerLink="/register"
+    type="button"
+  >
+    Register
+  </button>
+
+  <button
+    class="btn btn-outline-info my-2 my-sm-0 mx-1"
+    type="submit"
+    routerLink="/login"
+  >
+    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+  </button>
+</ng-container>
+
+<ng-container *ngIf="loggedIn">
+  <!--Add user icon button-->
+  <button
+    class="btn btn-outline-info my-2 my-sm-0 mx-1"
+    type="submit"
+    routerLink="/profile"
+  >
+    <i class="fa fa-user"></i>
+  </button>
+
+  <button
+    class="btn btn-outline-danger my-2 my-sm-0 mx-1"
+    type="submit"
+    (click)="logout()"
+  >
+    <i class="fa fa-arrow-right-from-bracket"></i>
+  </button>
+</ng-container>

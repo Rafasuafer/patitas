@@ -1,17 +1,15 @@
-export interface User {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    phone: string;
-    type: UserType;
+export class User {
+  id!: number;
+  name?: string;
+  email?: string;
+  phone?: string;
+  type?: UserType;
+
+  constructor() {}
 }
 
 // userTYpe enum
 export enum UserType {
-    PERSON = 0,
-    SHELTER = 1,
+  PERSON = 0,
+  SHELTER = 1,
 }
-    
-    
-

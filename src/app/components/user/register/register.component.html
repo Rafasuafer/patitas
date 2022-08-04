@@ -1,1 +1,110 @@
-<p>register works!</p>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="card col-md-4">
+      <div class="card-header">
+        <h5>Register</h5>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="register()" [formGroup]="registerForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('name')?.touched &&
+                  registerForm.get('name')?.hasError('required')
+              }"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('email')?.touched &&
+                  (registerForm.get('email')?.hasError('required') ||
+                    registerForm.get('email')?.hasError('email'))
+              }"
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              formControlName="phone"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('phone')?.touched &&
+                  registerForm.get('phone')?.hasError('required')
+              }"
+            />
+          </div>
+          <div class="form-group">
+            <label for="type">Do you want to register as:</label>
+            <div class="form-check" *ngFor="let item of enumValues">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="user_type"
+                  (change)="changeType($event)"
+                  [value]="item"
+                />
+                {{ enumKeys[item] }}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('password')?.touched &&
+                  (registerForm.get('password')?.hasError('required') ||
+                    registerForm.get('password')?.hasError('minlength'))
+              }"
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword"> Confirm Password </label>
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('confirmPassword')?.touched &&
+                  (registerForm.get('confirmPassword')?.hasError('required') ||
+                    registerForm.get('confirmPassword')?.hasError('no-match'))
+              }"
+            />
+          </div>
+          <div class="text-end">
+            <button
+              type="submit"
+              class="btn btn-warning my-2"
+              [disabled]="!registerForm.valid"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
